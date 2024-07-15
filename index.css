@@ -47,10 +47,29 @@
 
 .res-logo{
     width: 100%;
-    /* height: 135px; */
+    height: 150px;
 }
 
 .filter-btn{
     cursor: pointer;
     margin: 10px;
+}
+
+.shimmer-card{
+    margin: 20px;
+    width: 200px;
+    height: 400px;
+    background-color: #f0f0f0;
+}
+
+.shimmer-container{
+    display: flex;
+}
+
+.login{
+    padding: 0 20px;    /* top, bottom: 0px; left, right: 20px */
+}
+
+.filter{
+    display: flex;
 }
