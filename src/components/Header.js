@@ -1,11 +1,13 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
   const onlineStatus = useOnlineStatus();
+
+  const data = useContext(UserContext);
 
   return (
     <div className="bg-gradient-to-r from-orange-400 to-green-400 shadow-xl px-4 py-4 flex justify-between items-center">
@@ -16,7 +18,9 @@ const Header = () => {
         </div>
         <div className="ml-4">
           <h1 className="text-white text-xl font-bold">FoodKart</h1>
-          <p className="text-white text-sm font-semibold">Delivering happiness!</p>
+          <p className="text-white text-sm font-semibold">
+            Delivering happiness!
+          </p>
         </div>
       </div>
 
@@ -54,7 +58,7 @@ const Header = () => {
         </li>
         <li>
           <button
-            className="bg-white text-orange-400 hover:text-white hover:bg-orange-400 px-4 py-2 rounded-md shadow-md"
+            className="bg-white text-orange-400 hover:text-white hover:bg-orange-400 px-4 py-2 rounded-md shadow-md font-bold"
             onClick={() => {
               setbtnNameReact("Logout");
             }}
