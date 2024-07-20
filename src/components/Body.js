@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -9,6 +9,9 @@ const Body = () => {
   const [listOfRestaurants, setListOfResturants] = useState();
   const [filteredRestaurant, setFilteredRestaurant] = useState();
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardpromoted = withPromotedLabel(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -31,7 +34,7 @@ const Body = () => {
       setListOfResturants(resList);
       setFilteredRestaurant(resList);
     }
-    console.log(listOfRestaurants);
+    // console.log(listOfRestaurants);
   };
 
   // Conditional Rendering
@@ -89,13 +92,19 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {/* <RestaurantCard resData={restaurant} /> */}
+
+            {restaurant.info.sla.deliveryTime <= 25 ? (
+              <RestaurantCardpromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
