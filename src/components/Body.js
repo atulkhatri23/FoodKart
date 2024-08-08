@@ -22,7 +22,7 @@ const Body = () => {
       // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1417761&lng=72.77094149999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
 
     const currentRestaurants =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
@@ -43,11 +43,42 @@ const Body = () => {
   // }
 
   const onlineStatus = useOnlineStatus();
+  // if (onlineStatus == false)
+  //   return (
+  //     <h1 p-4>
+  //       Looks like You're Offline!!! Please check your internet connection.
+  //     </h1>
+  //   );
   if (onlineStatus == false)
     return (
-      <h1>
-        Looks like You're Offline!!! Please check your internet connection.
-      </h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "linear-gradient(135deg, #f8d7da, #f2a7a9)",
+          color: "#721c24",
+          textAlign: "center",
+          fontFamily: "Arial, sans-serif",
+          padding: "20px",
+          boxSizing: "border-box",
+        }}
+      >
+        <div>
+          {/* <img
+            src="https://www.flaticon.com/free-icon/no-internet_12581246?k=1721908608914&log-in=google"
+            alt="Offline"
+            style={{ marginBottom: "20px" }}
+          /> */}
+          <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>
+            Looks like You're Offline!
+          </h1>
+          <p style={{ fontSize: "18px" }}>
+            Please check your internet connection.
+          </p>
+        </div>
+      </div>
     );
 
   return !listOfRestaurants || listOfRestaurants.length === 0 ? (

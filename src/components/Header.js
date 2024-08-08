@@ -58,6 +58,14 @@ const Header = () => {
             Contact Us
           </Link>
         </li>
+        <li>
+          <Link
+            to="/grocery"
+            className="text-white font-semibold text-lg hover:text-gray-200"
+          >
+            Grocery
+          </Link>
+        </li>
         <li className="text-white font-semibold text-lg cursor-pointer hover:text-gray-200">
           <Link
             to="/cart"
